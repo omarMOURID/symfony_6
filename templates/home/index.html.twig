@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div class="container-sm">
+    <h1 class="m-5">Hello World!</h1>
+    <div class="row">
+        {% for message in app.session.flashbag.get('success') %}
+            <div class="alert alert-success" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="row">
+        {{ form_start(personneForm, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_end(personneForm) }}
+    </div>
+    <div class="row mt-5">
+        <div>
+            <a type="button" class="btn btn-dark" href={{ path('app_home.list') }}>show list</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
